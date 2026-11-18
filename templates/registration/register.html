@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<section class="card narrow">
+  <h1>Create your account</h1>
+  <p class="lede">Accounts are for students and counselors who want a dashboard. Prospective students can browse without one.</p>
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {% include "includes/field.html" with field=form.role %}
+    {% include "includes/field.html" with field=form.username %}
+    <div class="row">
+      {% include "includes/field.html" with field=form.first_name %}
+      {% include "includes/field.html" with field=form.last_name %}
+    </div>
+    {% include "includes/field.html" with field=form.email %}
+    {% include "includes/field.html" with field=form.contact_number %}
+    {% include "includes/field.html" with field=form.password1 %}
+    {% include "includes/field.html" with field=form.password2 %}
+    <button type="submit" class="btn">Create account</button>
+  </form>
+  <p class="aside">Already registered? <a href="{% url 'accounts:login' %}">Log in</a></p>
+</section>
+{% endblock %}

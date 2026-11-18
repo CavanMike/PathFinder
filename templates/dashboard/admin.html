@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Admin dashboard{% endblock %}
+{% block content %}
+<h1>Administration</h1>
+<p class="lede">Signed in as {{ user.username }}. Account overview for PathFinder.</p>
+
+<div class="stats">
+  <div class="stat"><strong>{{ total_users }}</strong><span>Total accounts</span></div>
+  <div class="stat"><strong>{{ student_count }}</strong><span>College students</span></div>
+  <div class="stat"><strong>{{ counselor_count }}</strong><span>Guidance counselors</span></div>
+  <div class="stat"><strong>{{ admin_count }}</strong><span>Administrators</span></div>
+</div>
+
+<section class="card">
+  <h2>Newest accounts</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Username</th><th>Email</th><th>Role</th><th>Joined</th></tr></thead>
+      <tbody>
+        {% for u in recent_users %}
+        <tr>
+          <td>{{ u.username }}</td>
+          <td>{{ u.email }}</td>
+          <td><span class="badge badge-{{ u.role|lower }}">{{ u.get_role_display }}</span></td>
+          <td>{{ u.date_joined|date:"M j, Y" }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% if user.is_staff %}<p class="aside"><a href="{% url 'admin:index' %}">Open Django admin to manage roles and accounts</a></p>{% endif %}
+</section>
+
+<section class="card">
+  <h2>Coming in later phases</h2>
+  <ul class="planned">
+    <li>Manage degree programs and fields of study</li>
+    <li>Review the PDF export log</li>
+  </ul>
+</section>
+{% endblock %}

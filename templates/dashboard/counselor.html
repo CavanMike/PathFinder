@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Counselor dashboard{% endblock %}
+{% block content %}
+<h1>Welcome, {% firstof user.first_name user.username %}</h1>
+<p class="lede">Your counseling workspace. Program data and comparison tools arrive in the next phases.</p>
+
+<div class="grid">
+  <article class="card"><h2>Program dashboard</h2><p>Top-rated majors, most challenging courses and sentiment.</p><span class="soon">Next phase</span></article>
+  <article class="card"><h2>Compare two majors</h2><p>Side-by-side satisfaction, study hours and challenges.</p><span class="soon">Next phase</span></article>
+  <article class="card"><h2>PDF summaries</h2><p>Export comparison sheets for counseling sessions.</p><span class="soon">Next phase</span></article>
+  <article class="card"><h2>Your profile</h2><p>Keep your contact details current.</p><a class="btn btn-small" href="{% url 'accounts:profile' %}">View profile</a></article>
+</div>
+{% endblock %}

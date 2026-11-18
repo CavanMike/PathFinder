@@ -1,0 +1,115 @@
+:root {
+  --paper: #f5f6f2;
+  --surface: #ffffff;
+  --ink: #17262b;
+  --muted: #5b6b70;
+  --line: #d8ddd6;
+  --primary: #0e6b5c;
+  --primary-dark: #0a4f44;
+  --marker: #f0b429;
+  --danger: #b3261e;
+  --ok: #1d6b3a;
+  --radius: 6px;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 400 1rem/1.55 "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  min-height: 100vh; display: flex; flex-direction: column;
+}
+h1, h2 { font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif; line-height: 1.15; margin: 0 0 .6rem; }
+h1 { font-size: clamp(1.7rem, 4vw, 2.3rem); font-weight: 700; }
+h2 { font-size: 1.2rem; font-weight: 700; }
+a { color: var(--primary); }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 3px solid var(--marker); outline-offset: 2px;
+}
+
+.topbar {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: .8rem clamp(1rem, 4vw, 2.5rem); background: var(--surface);
+  border-bottom: 3px solid var(--primary);
+}
+.brand {
+  font: 700 1.4rem "Bricolage Grotesque", system-ui, sans-serif;
+  color: var(--ink); text-decoration: none;
+  background: linear-gradient(transparent 62%, var(--marker) 62%);
+}
+.nav { display: flex; align-items: center; gap: 1.1rem; }
+.nav a { text-decoration: none; font-weight: 600; }
+.nav form { margin: 0; }
+.link-button { background: none; border: 0; padding: 0; font: inherit; font-weight: 600; color: var(--primary); cursor: pointer; }
+.link-button:hover { text-decoration: underline; }
+
+.page { flex: 1; width: 100%; max-width: 62rem; margin: 0 auto; padding: 2rem clamp(1rem, 4vw, 2rem) 3rem; }
+.footer { padding: 1.2rem; text-align: center; color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line); }
+.lede { color: var(--muted); max-width: 60ch; margin: 0 0 1.5rem; }
+
+.messages { max-width: 62rem; width: 100%; margin: 1rem auto 0; padding: 0 clamp(1rem, 4vw, 2rem); }
+.message { margin: 0 0 .5rem; padding: .7rem 1rem; border-radius: var(--radius); border-left: 5px solid; background: var(--surface); }
+.message-success { border-color: var(--ok); }
+.message-error { border-color: var(--danger); }
+.message-info, .message-warning { border-color: var(--marker); }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1.25rem; }
+.narrow { max-width: 34rem; margin-left: auto; margin-right: auto; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; }
+.grid .card { margin: 0; display: flex; flex-direction: column; gap: .4rem; }
+.grid .card p { margin: 0 0 .6rem; color: var(--muted); }
+.grid .card .btn, .grid .card .soon { margin-top: auto; align-self: flex-start; }
+.soon { font-size: .85rem; color: var(--muted); border: 1px dashed var(--line); border-radius: 99px; padding: .1rem .7rem; }
+
+.field { margin-bottom: 1rem; flex: 1; }
+.field label { display: block; font-weight: 600; margin-bottom: .25rem; }
+.field input:not([type=file]), .field select {
+  width: 100%; padding: .6rem .7rem; font: inherit; color: var(--ink);
+  border: 1px solid #aeb8b0; border-radius: var(--radius); background: #fff;
+}
+.field.has-error input, .field.has-error select { border-color: var(--danger); }
+.field small { display: block; margin-top: .25rem; font-size: .85rem; }
+.field .help { color: var(--muted); }
+.field .help ul { margin: .2rem 0 0; padding-left: 1.1rem; }
+.field .error { color: var(--danger); font-weight: 600; }
+.row { display: flex; gap: 1rem; flex-wrap: wrap; }
+.row .field { min-width: 12rem; }
+.actions { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+.btn {
+  display: inline-block; padding: .65rem 1.2rem; border: 2px solid var(--primary); border-radius: var(--radius);
+  background: var(--primary); color: #fff; font: 600 1rem "Source Sans 3", system-ui, sans-serif;
+  text-decoration: none; cursor: pointer;
+}
+.btn:hover { background: var(--primary-dark); border-color: var(--primary-dark); }
+.btn-small { padding: .35rem .85rem; font-size: .95rem; }
+.btn-ghost { background: transparent; color: var(--primary); }
+.btn-ghost:hover { background: #e6f0ed; color: var(--primary-dark); }
+.aside { margin: 1.2rem 0 0; color: var(--muted); }
+
+.badge { display: inline-block; padding: .1rem .6rem; border-radius: 99px; font-size: .85rem; font-weight: 600; background: #e6f0ed; color: var(--primary-dark); }
+.badge-admin { background: #fbe9c3; color: #6b4a00; }
+.badge-counselor { background: #dfe9f5; color: #1f4268; }
+
+.profile-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
+.avatar { width: 5rem; height: 5rem; border-radius: 50%; object-fit: cover; border: 3px solid var(--marker); flex: none; }
+.avatar-empty { display: grid; place-items: center; background: var(--primary); color: #fff; font: 700 2rem "Bricolage Grotesque", sans-serif; }
+.details { display: grid; grid-template-columns: max-content 1fr; gap: .5rem 1.5rem; margin: 0 0 1.5rem; }
+.details dt { color: var(--muted); }
+.details dd { margin: 0; font-weight: 600; word-break: break-word; }
+
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 1rem; margin-bottom: 1.25rem; }
+.stat { background: var(--surface); border: 1px solid var(--line); border-left: 5px solid var(--marker); border-radius: var(--radius); padding: 1rem; }
+.stat strong { display: block; font: 700 2rem "Bricolage Grotesque", sans-serif; line-height: 1.1; }
+.stat span { color: var(--muted); }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: .55rem .6rem; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { color: var(--muted); font-weight: 600; }
+.planned { margin: 0; padding-left: 1.2rem; color: var(--muted); }
+
+@media (max-width: 36rem) {
+  .topbar { flex-wrap: wrap; }
+  .details { grid-template-columns: 1fr; gap: .1rem; }
+  .details dd { margin-bottom: .6rem; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }

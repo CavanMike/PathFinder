@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Student dashboard{% endblock %}
+{% block content %}
+<h1>Welcome, {% firstof user.first_name user.username %}</h1>
+<p class="lede">Your experience helps incoming students choose with real information. Surveys are anonymous and are never tied to this account.</p>
+
+<div class="grid">
+  <article class="card"><h2>Share your course experience</h2><p>Rate your program and list the challenges you face.</p><span class="soon">Next phase</span></article>
+  <article class="card"><h2>Browse programs</h2><p>See how other majors compare.</p><span class="soon">Next phase</span></article>
+  <article class="card"><h2>Your profile</h2><p>Update your name, email, contact number or photo.</p><a class="btn btn-small" href="{% url 'accounts:profile' %}">View profile</a></article>
+</div>
+{% endblock %}
